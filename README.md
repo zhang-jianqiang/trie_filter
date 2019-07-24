@@ -19,18 +19,24 @@ trie_filter_search_all，一次返回所有的命中词;修复内存泄露
 下面的$LIB_PATH为依赖库安装目录，$INSTALL_PHP_PATH为PHP5安装目录。
 
 ### 安装libdatrie
-    $ tar zxvf libdatrie-0.2.4.tar.gz
-    $ cd libdatrie-0.2.4
-    $ make clean
-    $ ./configure --prefix=$LIB_PATH
-    $ make
-    $ make install
+	$ cd /usr/local/src/
+	$ curl -O ftp://linux.thai.net/pub/ThaiLinux/software/libthai/libdatrie-0.2.4.tar.gz
+	$ tar zxvf libdatrie-0.2.4.tar.gz
+	$ cd libdatrie-0.2.4
+	$ make clean
+	$ ./configure --prefix=/usr/local/libdatrie
+	$ make
+	$ make install
 
-### 安装扩展   
-    $ $INSTALL_PHP_PATH/bin/phpize
-    $ ./configure --with-php-config=$INSTALL_PHP_PATH/bin/php-config --with-trie_filter=$LIB_PATH
-    $ make
-    $ make install
+### 安装扩展
+	// 其中那个zip包即为当前仓库下载的压缩包
+	$ wget https://github.com/jiopuud/trie_filter/archive/master.zip
+	$ unzip master.zip
+	$ cd php-ext-trie-filter-master/
+	$ phpize
+	$ ./configure --with-php-config=/usr/bin/php-config --with-trie_filter=/usr/local/libdatrie
+	$ make
+	$ make install
 
 然后修改php.ini，增加一行：extension=trie_filter.so，然后重启PHP。
 
