@@ -1,4 +1,3 @@
-[toc]
 # PHP敏感词过滤扩展
 ## 安装
 ### 安装libdatrie
